@@ -15,7 +15,7 @@ func main() {
 
 	init_header()
 
-	var username string = "Ankit"
+	var username string
 	takeInput(&username, *input)
 
 	welcome_user(username)
