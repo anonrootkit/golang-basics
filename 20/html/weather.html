@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <title>{{.Location.LOCATION}}</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .main-container {
+            margin: 2% auto;
+            width: 70%;
+        }
+
+        header {
+            text-align: center;
+        }
+
+        header h1 {
+            text-decoration: underline;
+            text-underline-offset: 20px;
+            text-underline-style: dash-dot-dot-heavy;
+        }
+
+        .header-temp {
+            display: inline;
+        }
+
+        .header-wind {
+            display: inline;
+        }
+
+        header sup {
+            font-size: 12px;
+        }
+
+        table {
+            width: 70%;
+            margin: 5% auto;
+            text-align: center;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+    <header>
+        <h1>{{.Location.LOCATION}}, {{.Location.STATE}}, {{.Location.COUNTRY}}</h1>
+        <h3 class="header-temp">{{.Current.TEMP_CEL}}<sup>°C</sup></h3> ~ <h3 class="header-temp">
+        {{.Current.TEMP_FAH}}<sup>°F</sup></h3>
+        \/
+        <h3 class="header-wind">{{.Current.WIND_KPH}}<sup>kph</sup></h3> ~ <h3 class="header-wind">{{.Current.WIND_MPH}}<sup>mph</sup>
+    </h3>
+    </header>
+
+    <table>
+        <tr>
+            <th>Day</th>
+            <th style="width: 70%;">Temperature</th>
+        </tr>
+
+        {{range $idx, $val := .Forecast.Days}}
+
+        <tr>
+            <td>{{inc $idx}}</td>
+            <td>{{.DAY.TEMP_CEL}}<sup>°C</sup> ~ {{.DAY.TEMP_FAH}}<sup>°F</sup></td>
+        </tr>
+
+        {{end}}
+
+    </table>
+
+</div>
+</body>
+</html>
