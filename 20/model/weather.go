@@ -55,6 +55,8 @@ func (weather Weather) GetFormattedWeather() string {
 		formattedWeather += "*"
 	}
 
+	formattedWeather += "\n"
+
 	return formattedWeather
 }
 
